@@ -3,18 +3,21 @@ import java.util.Random;
 public class Producer implements Runnable {
 
     private Printer print;
-    private int[] ap;
+    private int number;
+    private int step;
     private static final int MAX = 5;
     private static final int MIN = 1;
 
-    public Producer(Printer print, int[] ap) {
+    public Producer(Printer print, int number, int step) {
         this.print = print;
-        this.ap = ap;
+        this.number = number;
+        this.step = step;
     }
 
     @Override
     public void run() {
-        for (int i : ap) {
+        for (int i = 0; i <= 20; i++) {
+
             int millis = new Random().nextInt((MAX - MIN) + 1) + MIN;
 
             try {
@@ -24,8 +27,10 @@ public class Producer implements Runnable {
                 throw new RuntimeException(e);
             }
 
-            print.add(i);
+            print.add(number);
             print.print();
+
+            number = number + step;
         }
     }
 }
