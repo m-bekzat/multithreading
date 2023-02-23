@@ -27,7 +27,9 @@ public class Producer implements Runnable {
                 throw new RuntimeException(e);
             }
 
-            print.add(number);
+            print.push(number);
+            System.out.println(Thread.currentThread().getName() + " pushed " + number + " to stack");
+
             print.print();
 
             number = number + step;

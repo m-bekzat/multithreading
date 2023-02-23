@@ -3,8 +3,8 @@ import java.util.Stack;
 public class Printer {
     private Stack<Integer> stack = new Stack<>();
 
-    synchronized void add(int i) {
-        stack.add(i);
+    synchronized void push(int i) {
+        stack.push(i);
     }
 
     synchronized void print() {
